@@ -7,11 +7,16 @@ public class runner {
 
         studentDS studentArray = new studentDS();
         studentArray.initDs();
-        studentArray.addStudent("Ben swisa", "2055", 2, 82.5);
+        studentArray.searchByYear(2);
+        studentArray.SearchByAvgRange(72.2, 98.6);
+        studentArray.delStudentById("5590");
+        studentArray.searchById("5590");
+        studentArray.searchById("111");
+        studentArray.printLastAdded();
+        studentArray.addStudent("Haim Levi", "7780", 3, 90.8);
+        studentArray.addStudent("Ben swisa", "2201", 2, 88.5);
+        studentArray.printLastAdded();
         studentArray.printDS();
-        studentArray.searchById("3313");
-        studentArray.SearchByAvgRange(75, 90);
-        studentArray.searchByYear(3);
         
         
 

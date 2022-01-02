@@ -1,8 +1,3 @@
-Moshe Cohen
-2234
-2
-89.6
-
 Maayan Aroki
 5590 
 1
@@ -13,8 +8,13 @@ Tamir Banay
 2
 89.2
 
+Haim Levi
+7780
+3
+90.8
+
 Ben swisa
-2055
+2201
 2
-82.5
+88.5
 

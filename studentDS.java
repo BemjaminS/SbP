@@ -8,7 +8,8 @@ import java.io.PrintWriter;
 
 
 public class studentDS{
-    static int index =0;
+    int index =0;
+    student sTemp;
     private student[] ds;
 
     public studentDS(){
@@ -28,8 +29,10 @@ public class studentDS{
             br.readLine();//skip after 4 line
 
             student s = new student(name, id, year, avg);//create new student from the file
+            sTemp=s;
             this.ds[index]=s;//stored the student object in array
             index++;
+            
 
         }
         f.close();
@@ -51,6 +54,7 @@ public class studentDS{
     //----------------------------------------------------------------------------------------------->
     public void addStudent(String name , String id , int year , double avg){    
         student s = new student(name, id, year, avg);
+        sTemp=s;
         ds[index] = s;
         index++;
     }
@@ -66,6 +70,8 @@ public class studentDS{
             pw.println(this.ds[i].getAvargae());
             pw.println();
         }
+        sortedList();
+        
 
         pw.close();
         dsFile.close();
@@ -73,6 +79,7 @@ public class studentDS{
     }
     //----------------------------------------------------------------------------------------------->
     public void SearchByAvgRange(double x , double y){
+        sortedList();
         for (int i = 0; i < index; i++) {
             if (this.ds[i].getAvargae()>=x && this.ds[i].getAvargae()<=y) {
                 System.out.println("Found Between This Avg's ->" + this.ds[i].toString());
@@ -97,9 +104,41 @@ public class studentDS{
     }
     //----------------------------------------------------------------------------------------------->
 
+    public void sortedList(){
+        student temp =null;
+        for (int i = 0; i < index; i++) {
+            for (int j = i+1; j < index; j++) {
+                if (ds[j]==null) {
+                    break;
+                }
+                if (ds[i].getAvargae()>ds[j].getAvargae()) {
+                    temp = ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=temp;
+                }
+            }
+        }
+    }
+    //----------------------------------------------------------------------------------------------->
 
-    
+    public void printLastAdded(){
+        System.out.println("Last added Student: " +  sTemp.toString());
+    }
+    //----------------------------------------------------------------------------------------------->
 
+    public void delStudentById(String id){
+        student [] tempArr = new student[50];
+        for (int i = 0 , j=0 ; i < index; i++) {
+            if (!(this.ds[i].getId().equals(id))) {
+                tempArr[j++] = this.ds[i]; 
+            }
+            
+        }
+        this.ds=tempArr;//re-assaign the array after change
+        index--;
+    }
+
+    //----------------------------------------------------------------------------------------------->
 
     
 }
